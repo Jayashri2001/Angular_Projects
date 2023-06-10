@@ -1,0 +1,13 @@
+{
+  "user": [
+    {
+      "id": "user@user.com",
+      "firstName": "user",
+      "lastName": "user",
+      "gender": "male",
+      "password": "8ed46d8"
+    }
+  
+  ],
+  "bookList": []
+}

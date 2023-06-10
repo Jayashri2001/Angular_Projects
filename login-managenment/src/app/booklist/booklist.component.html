@@ -1,0 +1,100 @@
+<app-dashbord></app-dashbord>
+<div class="container">
+    <div class="container" *ngIf="!emptyState">
+        <div class="innerContainer">
+            <div class="table-container mb-3">
+                <div class="inner-table d-flex justify-content-between mb-3">
+                    <table class="table mt-3  ">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Book ID</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Author</th>
+                                <th scope="col">Published_date</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr *ngFor="let row of bookData" >
+                                <td>{{row.book_id}}</td>
+                                <td>{{row.title}}</td>
+                                <td>{{row.author}}</td>
+                                <td>{{row.published_date}}</td>
+                                <td>{{row.price}}</td>
+                                <td>
+                                    <button type="button" (click)="clickAddBook()" class="btn btn-primary"
+                                        data-bs-toggle="modal" data-bs-target="#exampleModal">ADD</button>
+                                    <button type="button" (click)="onEdit(row)" class="btn btn-info"
+                                        data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
+                                    <button (click)="deletebook(row)" class="btn btn-danger">Delete</button>
+                                </td>
+                            </tr>
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="emptyState">
+        <div class="emptyState-container">
+            <p class="mb-2 mt-1"> Booklist is empty </p>
+            <!-- <a class="btn btn-dark btn-sm mt-1" (click)="clickAddBook()">
+                Add Book <i class="bi bi-arrow-right"></i></a> -->
+            <button type="button" (click)="clickAddBook()" class="btn btn-secondary btn-margin"
+            data-bs-toggle="modal" data-bs-target="#exampleModal">ADD Book</button>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Book Details</h5>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="formValue">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Book_id</label>
+                            <input type="text" formControlName="book_id" class="form-control" id="exampleInputBook_id">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Title</label>
+                            <input type="text" formControlName="title" class="form-control" id="exampleInputTitle">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Author</label>
+                            <input type="text" formControlName="author" class="form-control" id="exampleInputAuthor">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Published_date</label>
+                            <input type="text" formControlName="published_date" class="form-control"
+                                id="exampleInputPublished_date">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Price</label>
+                            <input type="text" formControlName="price" class="form-control" id="exampleInputPrice">
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <!-- <button type="button" *ngIf="showAdd" (click)="clickAddBook()"
+                        class="btn btn-primary">Add</button> -->
+
+                    <button type="button" (click)="postBookDetails()" class="btn btn-secondary"
+                    data-bs-toggle="modal" data-bs-target="#exampleModal">ADD</button>
+
+                    <button type="button" *ngIf="showUpdate" (click)="updateBookDetails()"
+                        class="btn btn-primary">Update</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

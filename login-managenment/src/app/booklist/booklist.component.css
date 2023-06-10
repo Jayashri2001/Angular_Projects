@@ -1,0 +1,32 @@
+
+.table{
+    margin-top: 20px;
+    border-style:double;
+    font-size:medium;
+    text-align:center;
+    
+}
+
+.btn{
+    margin-left: 1rem;
+}
+
+.btn-margin{
+    margin-left: 0;
+}
+
+.innerContainer{
+    margin-top: 1rem;
+    padding-left: 1.5rem;
+    display: block;
+}
+.thead-dark{
+ background-color: black;
+    color: white;
+}
+
+.emptyState-container{
+    display: grid;
+    justify-content: center;
+    margin-top: 10%;
+}
